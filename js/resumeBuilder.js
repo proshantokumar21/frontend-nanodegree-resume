@@ -81,6 +81,17 @@ var projects = {
     ]
 }
 
+
+var formattedName = HTMLheaderName.replace("%data%", "Proshanto");
+var formattedRole = HTMLheaderRole.replace("%data%", "Web Developer");
+var formattedbioPic = HTMLbioPic.replace("%data%",bio.bioPic);
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+$("#header").append(formattedbioPic);
+
+
+
 if(bio.skills.length > 0){
 
     $("#header").append(HTMLskillsStart);
@@ -93,5 +104,21 @@ if(bio.skills.length > 0){
     $("#skills").append(formattedSkill);
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
     $("#skills").append(formattedSkill);
+    
+}
+
+for (job in work.jobs){
+    $("#workExperience").append(HTMLworkStart);
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
+    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+    $(".work-entry:last").append(formattedEmployerTitle);
+    $(".work-entry:last").append(formattedDates);
+    $(".work-entry:last").append(formattedLocation);
+    $(".work-entry:last").append(formattedDescription);
     
 }

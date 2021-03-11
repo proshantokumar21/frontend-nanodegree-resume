@@ -59,14 +59,6 @@ var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
-var formattedName = HTMLheaderName.replace("%data%", "Proshanto");
-var formattedRole = HTMLheaderRole.replace("%data%", "Web Developer")
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-
-
 /*
 The Internationalize Names challenge found in the lesson Flow Control from JavaScript Basics requires you to create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
