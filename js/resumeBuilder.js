@@ -11,7 +11,7 @@ var bio = {
         "email" : "proshantokumer2@gmail.com",
         "github" : "proshantokumer2",
         "twitter" : "kumar.du.pro",
-        "location" : "Dhaka"
+        "location" : "Mountain View, CA"
     },
     "bioPic" : "images/fry.jpg",
     "welcomeMessage" : "Hi there! How are you?",
@@ -19,22 +19,37 @@ var bio = {
 }
 
 var work = {
-    "jobs" : [
-        {
-            "employer" : "Tuition",
-            "title" : "Teacher",
-            "dates" : "August 2018 - Present",
-            "description" : "I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students. I teach Students."
-        },
-        {
-            "employer" : "Neobux",
-            "title" : "Ad_Clicker",
-            "dates" : "January 2017 - December 2017",
-            "description" : "I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads. I click ads."
-        }
+    "jobs": [
+      {
+        "employer": "Udacity",
+        "title": "Course Developer",
+        "location": "Mountain View, CA",
+        "dates": "Feb 2014 - Current",
+        "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
+      },
+      {
+        "employer": "LearnBIG",
+        "title": "Software Engineer",
+        "location": "Seattle, WA",
+        "dates": "May 2013 - Jan 2014",
+        "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
+      },
+      {
+        "employer": "LEAD Academy Charter High School",
+        "title": "Science Teacher",
+        "location": "Nashville, TN",
+        "dates": "Jul 2012 - May 2013",
+        "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
+      },
+      {
+        "employer": "Stratford High School",
+        "title": "Science Teacher",
+        "location": "Nashville, TN",
+        "dates": "Jun 2009 - Jun 2012",
+        "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
+      }
     ]
-}
-
+  };
 
 
 var education = {
@@ -127,3 +142,36 @@ var displayWork = function(){
 
 }
 displayWork();
+
+$("#main").append(internationalizeButton);
+
+function inName(yourName){
+    var nameParts = yourName.trim().split(" ");
+    nameParts[1] = nameParts[1].toUpperCase();
+    nameParts[0] = nameParts[0].slice(0,1).toUpperCase() + nameParts[0].slice(1).toLowerCase();
+    
+    return nameParts[0] + " " + nameParts[1];
+}
+
+
+projects.display = function(){
+    for (project in projects.projects){
+        $("#projects").append(HTMLprojectStart);
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        $(".project-entry:last").append(formattedTitle);
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        $(".project-entry:last").append(formattedDates);
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+        $(".project-entry:last").append(formattedDescription);
+        for(image in projects.projects[project].images){
+            var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+            $(".project-entry:last").append(formattedImage);
+        }
+        
+    }
+}
+
+projects.display();
+
+
+$("#mapDiv").append(googleMap);
